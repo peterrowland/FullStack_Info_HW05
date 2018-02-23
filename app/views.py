@@ -13,11 +13,12 @@ def index():
     else:
         return render_template('login.html')
 
-@app.route('/login') # You need to specify something here for the function to get requests
+@app.route('/login', methods=['GET', 'POST']) # You need to specify something here for the function to get requests
 def login():
     # Here, you need to have logic like if there's a post request method, store the username and email from the form into
     # session dictionary
-    if():
+    if request.method == 'POST':
+        print('Post That')
         pass
     return None
 
