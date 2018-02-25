@@ -17,16 +17,16 @@ def index():
 
 @app.route('/login', methods=['GET', 'POST']) # You need to specify something here for the function to get requests
 def login():
-    # Here, you need to have logic like if there's a post request method, store the username and email from the form into
-    # session dictionary
+
     if request.method == 'POST':
-        session['username'] = request.form.get['username']
-        session['password'] = request.form.get['password']
-    # if request.method == 'GET':
-        # session['username'] = request.args.get['username']
-        # session['password'] = request.args.get['password']
-    # return redirect(url_for('index'))
-    return render_template('survey.html')
+        session['username'] = request.form['username']
+        session['password'] = request.form['password']
+    if request.method == 'GET':
+        session['username'] = request.args['username']
+        session['password'] = request.args['password']
+    # return render_template('survey.html')
+    return redirect(url_for('index'))
+    # return render_template('survey.html')
     # return None
 
 @app.route('/logout')
