@@ -1,15 +1,17 @@
 # Importing flask library
 from app import app
 from flask import Flask, redirect, make_response, render_template, url_for, session, request, escape, flash
-import os
+import os, sys
 app.secret_key = os.environ.get('SECRET_KEY') or 'hard to guess string'
 
 @app.route('/')
-@app.route('/index')
+@app.route('/index', methods=['GET', 'POST'])
 def index():
     username = ''
-    if (): #check if the user is already in session, if so, direct the user to survey.html Hint: render_template with a variable
-        pass
+    if 'username' in session: #check if the user is already in session, if so, direct the user to survey.html Hint: render_template with a variable
+        username = session['username']
+        return 'logged in as ' + username + '<br>' + \
+        "<b><a href = '/logout'>click to logout</a></b>"
     else:
         return render_template('login.html')
 
@@ -18,9 +20,14 @@ def login():
     # Here, you need to have logic like if there's a post request method, store the username and email from the form into
     # session dictionary
     if request.method == 'POST':
-        print('Post That')
-        pass
-    return None
+        session['username'] = request.form.get['username']
+        session['password'] = request.form.get['password']
+    # if request.method == 'GET':
+        # session['username'] = request.args.get['username']
+        # session['password'] = request.args.get['password']
+    # return redirect(url_for('index'))
+    return render_template('survey.html')
+    # return None
 
 @app.route('/logout')
 def logout():
