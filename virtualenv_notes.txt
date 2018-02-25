@@ -1,0 +1,8 @@
+pip install -r requirements.txt
+
+virtualenv -p python3 my_p3_env
+virtualenv -p /path/to/any/python/executable my_env
+
+virtualenv, pip, jinja2, etc. here: ls /Library/Python/2.7/site-packages/
+
+python -m pip install SomePackage==1.0.4   
