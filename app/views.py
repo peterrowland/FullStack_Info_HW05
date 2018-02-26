@@ -10,9 +10,7 @@ def index():
     username = ''
     if 'username' in session: #check if the user is already in session, if so, direct the user to survey.html Hint: render_template with a variable
         username = session['username']
-        return '<p>logged in as ' + username + '<br>' + \
-        "<b><a href = '/logout'>click to logout</a></b></p>"
-        return render_template('survey.html')
+        return render_template('survey.html', username=username)
     else:
         return render_template('login.html')
 
@@ -24,7 +22,6 @@ def login():
     else:
         session['username'] = request.args['username']
         session['email'] = request.args['email']
-    # return render_template('survey.html')
     return redirect(url_for('index'))
 
 @app.route('/logout')
