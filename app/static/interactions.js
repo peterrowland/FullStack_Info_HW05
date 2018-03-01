@@ -4,16 +4,16 @@ $('#submit-survey').on('click', function submitSurvey() {
 	var vacation = $("input[name=vacation]").val();
 	var feBefore = $("input[name=front-end-before]").val();
 	var feAfter = $("input[name=front-end-after]").val();
+
 	$.post('submit-survey',
-		  {color: color,
-			food: food,
-			vacation: vacation,
-			feAfter: feAfter,
-			feBefore: feBefore},
-			function(data) {
+			{'color': color,
+			'food': food,
+			'vacation': vacation,
+			'feAfter': feAfter,
+			'feBefore': feBefore},
+			function(data){
 				$("html").html(data);
-			}, 'json'
-	);
+	});
 });
 
 $("#site-title-wrapper").on('click', function goHome() {
